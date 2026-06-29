@@ -1,0 +1,6 @@
+/target
+/perf
+/.autopilot
+Cargo.lock
+*.log
+*.nosex
