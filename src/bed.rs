@@ -144,9 +144,13 @@ fn parse_fam(path: &Path) -> Result<Vec<Sample>> {
         out.push(Sample {
             fid: t[0].to_string(),
             iid: t[1].to_string(),
-            sex: t[4].parse().with_context(|| {
-                format!("{}:{}: bad sex {:?}", path.display(), lineno + 1, t[4])
-            })?,
+            // plink treats any sex code other than 1/2 as unknown, including
+            // the standard missing sentinel -9 and 0.
+            sex: match t[4].trim() {
+                "1" => 1,
+                "2" => 2,
+                _ => 0,
+            },
             phen: t[5].to_string(),
         });
     }

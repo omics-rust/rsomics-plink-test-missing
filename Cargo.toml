@@ -1,6 +1,6 @@
 [package]
 name = "rsomics-plink-test-missing"
-version = "0.1.0"
+version = "0.1.1"
 description = "Differential genotype-missingness test between cases and controls (plink --test-missing)"
 edition = "2024"
 rust-version = "1.91"
